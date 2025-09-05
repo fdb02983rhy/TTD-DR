@@ -437,10 +437,10 @@ workflow:
       id: '1756966920213'
       position:
         x: 30
-        y: 605
+        y: 597
       positionAbsolute:
         x: 30
-        y: 605
+        y: 597
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -529,10 +529,10 @@ workflow:
       id: '1756967108597'
       position:
         x: 942
-        y: 605
+        y: 597
       positionAbsolute:
         x: 942
-        y: 605
+        y: 597
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -558,10 +558,10 @@ workflow:
       id: '1756967253776'
       position:
         x: 1682
-        y: 605
+        y: 597
       positionAbsolute:
         x: 1682
-        y: 605
+        y: 597
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -571,7 +571,7 @@ workflow:
         break_conditions: []
         desc: ''
         error_handle_mode: terminated
-        height: 810
+        height: 794
         logical_operator: and
         loop_count: 2
         selected: false
@@ -579,14 +579,14 @@ workflow:
         title: Report Generation Loop
         type: loop
         width: 2636
-      height: 810
+      height: 794
       id: '1756967277820'
       position:
         x: 2422
-        y: 605
+        y: 597
       positionAbsolute:
         x: 2422
-        y: 605
+        y: 597
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -608,7 +608,7 @@ workflow:
         y: 135
       positionAbsolute:
         x: 2482
-        y: 740
+        y: 732
       selectable: false
       sourcePosition: right
       targetPosition: left
@@ -724,7 +724,7 @@ workflow:
         y: 99.5
       positionAbsolute:
         x: 2626
-        y: 704.5
+        y: 696.5
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -886,8 +886,8 @@ workflow:
                 type: string
             required:
             - evaluations
-            - reason_for_selection
             - best_query
+            - reason_for_selection
             type: object
         structured_output_enabled: true
         title: Search Query Select
@@ -903,7 +903,7 @@ workflow:
         y: 99.5
       positionAbsolute:
         x: 3234
-        y: 704.5
+        y: 696.5
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -942,7 +942,7 @@ workflow:
         y: 132
       positionAbsolute:
         x: 2930
-        y: 737
+        y: 729
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -2749,7 +2749,7 @@ workflow:
         y: 60
       positionAbsolute:
         x: 3538
-        y: 665
+        y: 657
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -4556,7 +4556,7 @@ workflow:
         y: 298
       positionAbsolute:
         x: 3538
-        y: 903
+        y: 895
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -6363,7 +6363,7 @@ workflow:
         y: 536
       positionAbsolute:
         x: 3538
-        y: 1141
+        y: 1133
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -6432,7 +6432,7 @@ workflow:
           max_retries: 3
           retry_enabled: true
           retry_interval: 1000
-        selected: true
+        selected: false
         structured_output:
           schema:
             additionalProperties: false
@@ -6442,8 +6442,8 @@ workflow:
               reasoning:
                 type: string
             required:
-            - reasoning
             - final_answer
+            - reasoning
             type: object
         structured_output_enabled: true
         title: Search Results Merge
@@ -6459,8 +6459,8 @@ workflow:
         y: 337.5
       positionAbsolute:
         x: 3842
-        y: 942.5
-      selected: true
+        y: 934.5
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -6494,7 +6494,7 @@ workflow:
         y: 354
       positionAbsolute:
         x: 4146
-        y: 959
+        y: 951
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -6529,7 +6529,7 @@ workflow:
         y: 480
       positionAbsolute:
         x: 4146
-        y: 1085
+        y: 1077
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -6592,7 +6592,7 @@ workflow:
           max_retries: 3
           retry_enabled: true
           retry_interval: 1000
-        selected: false
+        selected: true
         structured_output:
           schema:
             additionalProperties: false
@@ -6619,8 +6619,8 @@ workflow:
         y: 337.5
       positionAbsolute:
         x: 4450
-        y: 942.5
-      selected: false
+        y: 934.5
+      selected: true
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -6654,7 +6654,7 @@ workflow:
         y: 354
       positionAbsolute:
         x: 4754
-        y: 959
+        y: 951
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -6672,10 +6672,10 @@ workflow:
       id: '1757085822262'
       position:
         x: 5118
-        y: 605
+        y: 597
       positionAbsolute:
         x: 5118
-        y: 605
+        y: 597
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -6884,10 +6884,10 @@ workflow:
       id: '1757085974443'
       position:
         x: 334
-        y: 605
+        y: 597
       positionAbsolute:
         x: 334
-        y: 605
+        y: 597
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -6909,10 +6909,10 @@ workflow:
       id: '1757091722119'
       position:
         x: 1246
-        y: 731
+        y: 723
       positionAbsolute:
         x: 1246
-        y: 731
+        y: 723
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -6934,7 +6934,7 @@ workflow:
         y: 95.5
       positionAbsolute:
         x: 1306
-        y: 826.5
+        y: 818.5
       selectable: false
       sourcePosition: right
       targetPosition: left
@@ -7017,7 +7017,7 @@ workflow:
         y: 60
       positionAbsolute:
         x: 1450
-        y: 791
+        y: 783
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -7153,7 +7153,7 @@ workflow:
         y: 60
       positionAbsolute:
         x: 1754
-        y: 791
+        y: 783
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -7187,7 +7187,7 @@ workflow:
         y: 76.5
       positionAbsolute:
         x: 2058
-        y: 807.5
+        y: 799.5
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -7255,10 +7255,10 @@ workflow:
       id: '1757091985202'
       position:
         x: 638
-        y: 807.5
+        y: 799.5
       positionAbsolute:
         x: 638
-        y: 807.5
+        y: 799.5
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -7284,16 +7284,16 @@ workflow:
       id: '1757092003271'
       position:
         x: 942
-        y: 824
+        y: 816
       positionAbsolute:
         x: 942
-        y: 824
+        y: 816
       selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
       width: 244
     viewport:
-      x: 0
-      y: 0
+      x: -2426.9999999999995
+      y: -112
       zoom: 0.7
