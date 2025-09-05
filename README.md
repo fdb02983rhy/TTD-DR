@@ -10,6 +10,14 @@ This repository demonstrates how to implement TTD-DR using Dify's visual workflo
 
 TTD-DR revolutionizes deep research by conceptualizing report writing as an iterative diffusion process, similar to how diffusion models denoise images. It starts with a preliminary "noisy" draft and progressively refines it through retrieval-augmented denoising steps, mimicking the natural human writing process of planning, drafting, and multiple revisions.
 
+## Why TTD-DR?
+
+- **Human-Inspired**: Mimics how humans actually write - plan, draft, seek information, revise
+- **Coherent Integration**: Maintains consistency through the evolving draft
+- **Reduced Information Loss**: Progressive integration preserves valuable findings
+- **Timely Synthesis**: Incorporates information when most relevant, not just at the end
+- **Superior Performance**: Outperforms existing deep research agents on benchmarks
+
 ## Key Innovation
 
 Unlike traditional linear research agents (plan → search → write), TTD-DR maintains an evolving draft throughout the entire research process. This draft serves as both:
@@ -124,14 +132,6 @@ Output: Final refined report Rt
 | s_q | Search query self-evolving steps | 0 | No |
 | s_a | Answer self-evolving steps | 0 | No |
 | s_r | Report self-evolving steps | 0 | No |
-
-## Why TTD-DR?
-
-- **Human-Inspired**: Mimics how humans actually write - plan, draft, seek information, revise
-- **Coherent Integration**: Maintains consistency through the evolving draft
-- **Reduced Information Loss**: Progressive integration preserves valuable findings
-- **Timely Synthesis**: Incorporates information when most relevant, not just at the end
-- **Superior Performance**: Outperforms existing deep research agents on benchmarks
 
 ## Installation & Setup
 
