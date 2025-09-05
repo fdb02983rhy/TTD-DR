@@ -75,8 +75,6 @@ flowchart TD
     style SE fill:#fff3e0
 ```
 
-![Agentic Workflow](agentic_workflow_ja.png)
-
 ### 簡略化されたワークフロー
 
 ```
