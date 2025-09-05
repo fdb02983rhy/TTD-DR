@@ -15,6 +15,14 @@ version: 0.4.0
 workflow:
   conversation_variables:
   - description: ''
+    id: 32cb6d05-0cb1-4c7b-bd55-b7daaf3209d4
+    name: plan
+    selector:
+    - conversation
+    - plan
+    value: ''
+    value_type: string
+  - description: ''
     id: b1b19473-34de-4e28-9492-ab8f0021fa2a
     name: sub_search_answers
     selector:
@@ -103,17 +111,6 @@ workflow:
         targetType: loop
       id: 1756967253776-source-1756967277820-target
       source: '1756967253776'
-      sourceHandle: source
-      target: '1756967277820'
-      targetHandle: target
-      type: custom
-      zIndex: 0
-    - data:
-        isInLoop: false
-        sourceType: llm
-        targetType: loop
-      id: llm-source-1756967277820-target
-      source: llm
       sourceHandle: source
       target: '1756967277820'
       targetHandle: target
@@ -338,13 +335,88 @@ workflow:
       type: custom
       zIndex: 0
     - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1757091722119'
+        sourceType: llm
+        targetType: llm
+      id: 1757091728481-source-1757091752303-target
+      source: '1757091728481'
+      sourceHandle: source
+      target: '1757091752303'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInLoop: false
+        sourceType: loop
+        targetType: loop
+      id: 1757091722119-source-1756967277820-target
+      source: '1757091722119'
+      sourceHandle: source
+      target: '1756967277820'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1757091722119'
+        sourceType: llm
+        targetType: assigner
+      id: 1757091752303-source-1757091836193-target
+      source: '1757091752303'
+      sourceHandle: source
+      target: '1757091836193'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
         isInLoop: false
         sourceType: tool
         targetType: llm
-      id: 1757085974443-source-llm-target
+      id: 1757085974443-source-1757091985202-target
       source: '1757085974443'
       sourceHandle: source
-      target: llm
+      target: '1757091985202'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1757091722119'
+        sourceType: loop-start
+        targetType: llm
+      id: 1757091722119start-source-1757091728481-target
+      source: 1757091722119start
+      sourceHandle: source
+      target: '1757091728481'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: assigner
+      id: 1757091985202-source-1757092003271-target
+      source: '1757091985202'
+      sourceHandle: source
+      target: '1757092003271'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: assigner
+        targetType: loop
+      id: 1757092003271-source-1757091722119-target
+      source: '1757092003271'
+      sourceHandle: source
+      target: '1757091722119'
       targetHandle: target
       type: custom
       zIndex: 0
@@ -369,77 +441,6 @@ workflow:
       positionAbsolute:
         x: 30
         y: 605
-      selected: false
-      sourcePosition: right
-      targetPosition: left
-      type: custom
-      width: 244
-    - data:
-        context:
-          enabled: false
-          variable_selector: []
-        desc: ''
-        model:
-          completion_params:
-            temperature: 0.7
-          mode: chat
-          name: gpt-4o-mini
-          provider: langgenius/openai/openai
-        prompt_template:
-        - id: fff90206-1765-4021-9541-241399adb1ef
-          role: system
-          text: "Today is {{#1757085974443.text#}}. You are an AI research assistant\
-            \ tasked with creating a comprehensive research plan and report structure\
-            \ based on a user's question. Your goal is to break down the question,\
-            \ develop a research plan, and outline a report structure that will effectively\
-            \ answer the user's query.\n\nHere is the user's question:\n<user_question>\n\
-            {{#1756966920213.deep_research_query#}}\n</user_question>\n\nFollow these\
-            \ steps to create a research plan and report structure:\n\n1. Break down\
-            \ the question:\n   Analyze the user's question and identify the main\
-            \ topics, subtopics, and key elements that need to be addressed. List\
-            \ these components in <breakdown> tags.\n\n2. Create a research plan:\n\
-            \   Based on the breakdown, develop a step-by-step research plan that\
-            \ outlines the information needed to answer the question comprehensively.\
-            \ Include potential sources of information and specific areas to investigate.\
-            \ Present this plan in <research_plan> tags.\n\n3. Outline the report\
-            \ structure:\n   Create a detailed outline for the report, including main\
-            \ sections, subsections, and the type of information to be included in\
-            \ each. The structure should logically flow from the research plan and\
-            \ address all aspects of the user's question. Present this outline in\
-            \ <report_structure> tags.\n\n4. For each section in the report structure,\
-            \ briefly describe what information should be included and why it's relevant\
-            \ to answering the user's question. Present this information in <section_details>\
-            \ tags within each section of the report structure.\n\n5. Provide any\
-            \ additional notes or considerations for the research and report writing\
-            \ process in <additional_notes> tags.\n\nPresent your complete response\
-            \ in the following format:\n\n<response>\n<breakdown>\n[List the main\
-            \ components of the user's question]\n</breakdown>\n\n<research_plan>\n\
-            [Provide a step-by-step research plan]\n</research_plan>\n\n<report_structure>\n\
-            [Outline the report structure with main sections and subsections]\n<section_details>\n\
-            [For each section, describe the information to be included and its relevance]\n\
-            </section_details>\n</report_structure>\n\n<additional_notes>\n[Include\
-            \ any extra considerations or recommendations]\n</additional_notes>\n\
-            </response>\n\nEnsure that your research plan and report structure are\
-            \ comprehensive, logical, and directly address all aspects of the user's\
-            \ question."
-        retry_config:
-          max_retries: 3
-          retry_enabled: true
-          retry_interval: 1000
-        selected: false
-        title: Plan Generation
-        type: llm
-        variables: []
-        vision:
-          enabled: false
-      height: 119
-      id: llm
-      position:
-        x: 942
-        y: 731
-      positionAbsolute:
-        x: 942
-        y: 731
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -527,10 +528,10 @@ workflow:
       height: 119
       id: '1756967108597'
       position:
-        x: 638
+        x: 942
         y: 605
       positionAbsolute:
-        x: 638
+        x: 942
         y: 605
       selected: false
       sourcePosition: right
@@ -556,10 +557,10 @@ workflow:
       height: 86
       id: '1756967253776'
       position:
-        x: 942
+        x: 1682
         y: 605
       positionAbsolute:
-        x: 942
+        x: 1682
         y: 605
       selected: false
       sourcePosition: right
@@ -575,16 +576,16 @@ workflow:
         loop_count: 2
         selected: false
         start_node_id: 1756967277820start
-        title: Loop
+        title: Report Generation Loop
         type: loop
         width: 2636
       height: 810
       id: '1756967277820'
       position:
-        x: 1246
+        x: 2422
         y: 605
       positionAbsolute:
-        x: 1246
+        x: 2422
         y: 605
       selected: false
       sourcePosition: right
@@ -606,7 +607,7 @@ workflow:
         x: 60
         y: 135
       positionAbsolute:
-        x: 1306
+        x: 2482
         y: 740
       selectable: false
       sourcePosition: right
@@ -632,20 +633,20 @@ workflow:
         - id: beffd0ad-1fc0-420b-b584-78cd91ff293a
           role: system
           text: "Today is {{#1757085974443.text#}}. You are an AI assistant tasked\
-            \ with generating 3 sub search queries to help complete a research report.\
+            \ with generating 5 sub search queries to help complete a research report.\
             \ You will be provided with a question, a research plan, the current version\
             \ of the report, a list of existing sub search queries, and their corresponding\
-            \ answers. Your goal is to generate 3 new sub search queries that will\
+            \ answers. Your goal is to generate 5 new sub search queries that will\
             \ help fill gaps in the current report and contribute to a more comprehensive\
             \ answer to the main question.\n\nHere is the main question:\n<question>\n\
             {{#1756966920213.deep_research_query#}}\n</question>\n\nHere is the research\
-            \ plan:\n<research_plan>\n{{#llm.text#}}\n</research_plan>\n\nHere is\
-            \ the current version of the report:\n<current_report>\n{{#conversation.report#}}\n\
+            \ plan:\n<research_plan>\n{{#conversation.plan#}}\n</research_plan>\n\n\
+            Here is the current version of the report:\n<current_report>\n{{#conversation.report#}}\n\
             </current_report>\n\nHere are the existing sub search queries:\n<sub_search_queries>\n\
             {{#conversation.sub_search_queries#}}\n</sub_search_queries>\n\nHere are\
             \ the answers to the existing sub search queries:\n<sub_search_answers>\n\
             {{#conversation.sub_search_answers#}}\n</sub_search_answers>\n\nYour task\
-            \ is to generate 3 new sub search queries that will help complete the\
+            \ is to generate 5 new sub search queries that will help complete the\
             \ report and provide a more comprehensive answer to the main question.\
             \ To do this, follow these steps:\n\n1. Analyze the current report and\
             \ research plan carefully.\n2. Identify gaps in the information or areas\
@@ -658,17 +659,17 @@ workflow:
             \ plan.\n- Avoid overly broad or vague questions.\n- Ensure that the answers\
             \ to these queries will provide valuable information for the report.\n\
             \nHere are examples of good and bad sub search queries:\n\nGood:\n- \"\
-            What are the top 3 environmental impacts of electric vehicle battery production?\"\
+            What are the top 5 environmental impacts of electric vehicle battery production?\"\
             \n- \"How do different countries' policies on renewable energy subsidies\
             \ compare?\"\n- \"What are the projected job growth rates in the solar\
             \ energy sector for the next 5 years?\"\n\nBad:\n- \"Tell me about electric\
             \ vehicles\" (too broad)\n- \"What is renewable energy?\" (too basic,\
             \ likely already covered)\n- \"List all countries\" (not directly related\
-            \ to the main question)\n\nAfter generating your 3 sub search queries,\
+            \ to the main question)\n\nAfter generating your 5 sub search queries,\
             \ double-check them to ensure they meet the following criteria:\n- Relevance\
             \ to the main question and research plan\n- Specificity and focus\n- Potential\
             \ to provide valuable information for the report\n- No overlap with existing\
-            \ queries\n\nOnce you have finalized your 3 sub search queries, output\
+            \ queries\n\nOnce you have finalized your 5 sub search queries, output\
             \ them in the following JSON format:\n\n<output>\n{\n  \"sub_search_queries\"\
             : [\n    {\n      \"query\": \"Your first sub search query here\",\n \
             \     \"rationale\": \"Brief explanation of how this query will contribute\
@@ -676,10 +677,14 @@ workflow:
             \ query here\",\n      \"rationale\": \"Brief explanation of how this\
             \ query will contribute to the report\"\n    },\n    {\n      \"query\"\
             : \"Your third sub search query here\",\n      \"rationale\": \"Brief\
-            \ explanation of how this query will contribute to the report\"\n    }\n\
-            \  ]\n}\n</output>\n\nRemember to replace the placeholder text with your\
-            \ actual queries and rationales. Ensure that your output is valid JSON\
-            \ format."
+            \ explanation of how this query will contribute to the report\"\n    },\n\
+            \    {\n      \"query\": \"Your forth sub search query here\",\n     \
+            \ \"rationale\": \"Brief explanation of how this query will contribute\
+            \ to the report\"\n    },\n    {\n      \"query\": \"Your fifth sub search\
+            \ query here\",\n      \"rationale\": \"Brief explanation of how this\
+            \ query will contribute to the report\"\n    }\n  ]\n}\n</output>\n\n\
+            Remember to replace the placeholder text with your actual queries and\
+            \ rationales. Ensure that your output is valid JSON format."
         retry_config:
           max_retries: 3
           retry_enabled: true
@@ -718,7 +723,7 @@ workflow:
         x: 204
         y: 99.5
       positionAbsolute:
-        x: 1450
+        x: 2626
         y: 704.5
       selected: false
       sourcePosition: right
@@ -744,18 +749,18 @@ workflow:
         - id: e28c384d-9970-42ed-bff7-1ff2a4aa30e7
           role: system
           text: "Today is {{#1757085974443.text#}}. You are an AI assistant tasked\
-            \ with scoring 3 sub search queries to help complete a research report.\
+            \ with scoring 5 sub search queries to help complete a research report.\
             \ Your goal is to evaluate these queries based on how well they will help\
             \ fill gaps in the current report and contribute to a more comprehensive\
             \ answer to the main question.\n\nFirst, review the following information:\n\
             \nMain Question:\n<main_question>\n{{#1756966920213.deep_research_query#}}\n\
-            </main_question>\n\nResearch Plan:\n<research_plan>\n{{#llm.text#}}\n\
+            </main_question>\n\nResearch Plan:\n<research_plan>\n{{#conversation.plan#}}\n\
             </research_plan>\n\nCurrent Version of the Report:\n<current_report>\n\
             {{#conversation.report#}}\n</current_report>\n\nHere are the existing\
             \ sub search queries:\n<sub_search_queries>\n{{#conversation.sub_search_queries#}}\n\
             </sub_search_queries>\n\nHere are the answers to the existing sub search\
             \ queries:\n<sub_search_answers>\n{{#conversation.sub_search_answers#}}\n\
-            </sub_search_answers>\n\nYour task is to evaluate the following 3 new\
+            </sub_search_answers>\n\nYour task is to evaluate the following 5 new\
             \ sub-queries:\n<new_sub_queries>\n{{#1757072785626.output#}}\n</new_sub_queries>\n\
             \nFor each of these new sub-queries, you will evaluate them based on the\
             \ following criteria:\n\n1. Coverage: How well does it address gaps in\
@@ -783,11 +788,23 @@ workflow:
             \      },\n      \"novelty\": {\n        \"score\": 0,\n        \"justification\"\
             : \"\"\n      },\n      \"specificity\": {\n        \"score\": 0,\n  \
             \      \"justification\": \"\"\n      },\n      \"relevance\": {\n   \
-            \     \"score\": 0,\n        \"justification\": \"\"\n      }\n    }\n\
-            \  ],\n  \"best_query\": \"\",\n  \"reason_for_selection\": \"\"\n}\n\n\
-            Ensure that your evaluation is thorough and your reasoning is clear and\
-            \ concise. Your goal is to identify the sub-query that will be most effective\
-            \ in improving the current report and answering the main question."
+            \     \"score\": 0,\n        \"justification\": \"\"\n      }\n    },\n\
+            \    {\n      \"query\": \"Sub-query 4\",\n      \"coverage\": {\n   \
+            \     \"score\": 0,\n        \"justification\": \"\"\n      },\n     \
+            \ \"novelty\": {\n        \"score\": 0,\n        \"justification\": \"\
+            \"\n      },\n      \"specificity\": {\n        \"score\": 0,\n      \
+            \  \"justification\": \"\"\n      },\n      \"relevance\": {\n       \
+            \ \"score\": 0,\n        \"justification\": \"\"\n      }\n    },\n  \
+            \  {\n      \"query\": \"Sub-query 5\",\n      \"coverage\": {\n     \
+            \   \"score\": 0,\n        \"justification\": \"\"\n      },\n      \"\
+            novelty\": {\n        \"score\": 0,\n        \"justification\": \"\"\n\
+            \      },\n      \"specificity\": {\n        \"score\": 0,\n        \"\
+            justification\": \"\"\n      },\n      \"relevance\": {\n        \"score\"\
+            : 0,\n        \"justification\": \"\"\n      }\n    }\n  ],\n  \"best_query\"\
+            : \"\",\n  \"reason_for_selection\": \"\"\n}\n\nEnsure that your evaluation\
+            \ is thorough and your reasoning is clear and concise. Your goal is to\
+            \ identify the sub-query that will be most effective in improving the\
+            \ current report and answering the main question."
         retry_config:
           max_retries: 3
           retry_enabled: true
@@ -885,9 +902,9 @@ workflow:
         x: 812
         y: 99.5
       positionAbsolute:
-        x: 2058
+        x: 3234
         y: 704.5
-      selected: true
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -903,7 +920,11 @@ workflow:
 
           {{ arg1[1]["query"] }}
 
-          {{ arg1[2]["query"] }}'
+          {{ arg1[2]["query"] }}
+
+          {{ arg1[3]["query"] }}
+
+          {{ arg1[4]["query"] }}'
         title: New Search Queries
         type: template-transform
         variables:
@@ -920,7 +941,7 @@ workflow:
         x: 508
         y: 132
       positionAbsolute:
-        x: 1754
+        x: 2930
         y: 737
       selected: false
       sourcePosition: right
@@ -2727,7 +2748,7 @@ workflow:
         x: 1116
         y: 60
       positionAbsolute:
-        x: 2362
+        x: 3538
         y: 665
       selected: false
       sourcePosition: right
@@ -4534,7 +4555,7 @@ workflow:
         x: 1116
         y: 298
       positionAbsolute:
-        x: 2362
+        x: 3538
         y: 903
       selected: false
       sourcePosition: right
@@ -6341,7 +6362,7 @@ workflow:
         x: 1116
         y: 536
       positionAbsolute:
-        x: 2362
+        x: 3538
         y: 1141
       selected: false
       sourcePosition: right
@@ -6372,7 +6393,7 @@ workflow:
             \ answer that fills gaps in the current report and contributes to a more\
             \ comprehensive answer to the main question.\n\nHere is the main question\
             \ you are helping to answer:\n<main_question>\n{{#1756966920213.deep_research_query#}}\n\
-            </main_question>\n\nHere is the research plan:\n<research_plan>\n{{#llm.text#}}\n\
+            </main_question>\n\nHere is the research plan:\n<research_plan>\n{{#conversation.plan#}}\n\
             </research_plan>\n\nHere is the current version of the report:\n<current_report>\n\
             {{#conversation.report#}}\n</current_report>\n\nHere are the existing\
             \ sub search queries:\n<sub_search_queries>\n{{#conversation.sub_search_queries#}}\n\
@@ -6411,7 +6432,7 @@ workflow:
           max_retries: 3
           retry_enabled: true
           retry_interval: 1000
-        selected: false
+        selected: true
         structured_output:
           schema:
             additionalProperties: false
@@ -6437,9 +6458,9 @@ workflow:
         x: 1420
         y: 337.5
       positionAbsolute:
-        x: 2666
+        x: 3842
         y: 942.5
-      selected: false
+      selected: true
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -6462,7 +6483,7 @@ workflow:
           write_mode: over-write
         loop_id: '1756967277820'
         selected: false
-        title: Assign Search Query
+        title: Append Search Query
         type: assigner
         version: '2'
       height: 86
@@ -6472,7 +6493,7 @@ workflow:
         x: 1724
         y: 354
       positionAbsolute:
-        x: 2970
+        x: 4146
         y: 959
       selected: false
       sourcePosition: right
@@ -6497,7 +6518,7 @@ workflow:
           write_mode: over-write
         loop_id: '1756967277820'
         selected: false
-        title: Assign Search Answer
+        title: Append Search Answer
         type: assigner
         version: '2'
       height: 86
@@ -6507,7 +6528,7 @@ workflow:
         x: 1724
         y: 480
       positionAbsolute:
-        x: 2970
+        x: 4146
         y: 1085
       selected: false
       sourcePosition: right
@@ -6597,7 +6618,7 @@ workflow:
         x: 2028
         y: 337.5
       positionAbsolute:
-        x: 3274
+        x: 4450
         y: 942.5
       selected: false
       sourcePosition: right
@@ -6622,7 +6643,7 @@ workflow:
           write_mode: over-write
         loop_id: '1756967277820'
         selected: false
-        title: Assign Report
+        title: Overwrite Report
         type: assigner
         version: '2'
       height: 86
@@ -6632,8 +6653,9 @@ workflow:
         x: 2332
         y: 354
       positionAbsolute:
-        x: 3578
+        x: 4754
         y: 959
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -6649,10 +6671,10 @@ workflow:
       height: 106
       id: '1757085822262'
       position:
-        x: 3942
+        x: 5118
         y: 605
       positionAbsolute:
-        x: 3942
+        x: 5118
         y: 605
       sourcePosition: right
       targetPosition: left
@@ -6866,6 +6888,406 @@ workflow:
       positionAbsolute:
         x: 334
         y: 605
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        break_conditions: []
+        desc: ''
+        error_handle_mode: terminated
+        height: 239
+        logical_operator: and
+        loop_count: 2
+        selected: false
+        start_node_id: 1757091722119start
+        title: Planing Loop
+        type: loop
+        width: 1116
+      height: 239
+      id: '1757091722119'
+      position:
+        x: 1246
+        y: 731
+      positionAbsolute:
+        x: 1246
+        y: 731
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 1116
+      zIndex: 1
+    - data:
+        desc: ''
+        isInLoop: true
+        selected: false
+        title: ''
+        type: loop-start
+      draggable: false
+      height: 48
+      id: 1757091722119start
+      parentId: '1757091722119'
+      position:
+        x: 60
+        y: 95.5
+      positionAbsolute:
+        x: 1306
+        y: 826.5
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-loop-start
+      width: 44
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1757091722119'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 2e20c0b2-deae-4b0b-8a65-f6d9152b4eac
+          role: system
+          text: "Today is {{#1757085974443.text#}}. You are an expert research planner\
+            \ tasked with improving research strategies. You will be given a user's\
+            \ question and an initial research plan. Your job is to critically analyze\
+            \ the plan, suggest improvements, and provide specific advice on how to\
+            \ make the research more effective.\n\nHere is the user's question:\n\
+            <user_question>\n{{#1756966920213.deep_research_query#}}\n</user_question>\n\
+            \nHere is the initial research plan:\n<research_plan>\n{{#conversation.plan#}}\n\
+            </research_plan>\n\nCarefully analyze the research plan in relation to\
+            \ the user's question. Consider the following aspects:\n1. Relevance:\
+            \ Does the plan address all aspects of the user's question?\n2. Efficiency:\
+            \ Is the plan structured in a logical and time-effective manner?\n3. Comprehensiveness:\
+            \ Does the plan cover all necessary areas of research?\n4. Reliability:\
+            \ Does the plan include steps to verify the credibility of sources?\n\
+            5. Adaptability: Is the plan flexible enough to accommodate unexpected\
+            \ findings?\n\nBased on your analysis, develop a set of reasoned improvements\
+            \ and specific pieces of advice to enhance the research plan. Your goal\
+            \ is to create a more effective strategy that will lead to a better answer\
+            \ for the user's question.\n\nPresent your analysis and recommendations\
+            \ in JSON format with two main keys: \"reasoning\" and \"advice\". The\
+            \ \"reasoning\" should explain your thought process for suggesting improvements,\
+            \ while the \"advice\" should list specific recommendations for revising\
+            \ the plan.\n\nYour output should be structured as follows:\n\n{\n  \"\
+            reasoning\": [\n    \"Your first reason for suggesting improvements\"\
+            ,\n    \"Your second reason for suggesting improvements\",\n    \"...\"\
+            \n  ],\n  \"advice\": [\n    \"Your first specific recommendation\",\n\
+            \    \"Your second specific recommendation\",\n    \"...\"\n  ]\n}\n\n\
+            Ensure that your reasoning is clear and logical, and that your advice\
+            \ is actionable and directly related to improving the research plan."
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              advice:
+                type: string
+              reasoning:
+                type: string
+            required:
+            - advice
+            - reasoning
+            type: object
+        structured_output_enabled: true
+        title: Plan Revision
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 119
+      id: '1757091728481'
+      parentId: '1757091722119'
+      position:
+        x: 204
+        y: 60
+      positionAbsolute:
+        x: 1450
+        y: 791
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: false
+        isInLoop: true
+        loop_id: '1757091722119'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 7e55d867-5687-417f-9a3a-fdbed3c75879
+          role: system
+          text: 'Today is {{#1757085974443.text#}}. You are tasked with refining a
+            research plan to better answer a user''s question. You will be given the
+            user''s question, an initial research plan, and advice for refining the
+            plan. Your goal is to create a more comprehensive and effective plan that
+            will lead to a better answer for the user.
+
+
+            Here is the user''s question:
+
+            <user_question>
+
+            {{#1756966920213.deep_research_query#}}
+
+            </user_question>
+
+
+            Here is the initial research plan:
+
+            <initial_plan>
+
+            {{#conversation.plan#}}
+
+            </initial_plan>
+
+
+            Here is the advice for refining the plan:
+
+            <advice>
+
+            {{#1757091728481.structured_output.advice#}}
+
+            </advice>
+
+
+            Analyze the user''s question, the initial plan, and the advice carefully.
+            Then, create a refined and improved research plan that addresses all aspects
+            of the user''s question more effectively. Consider any gaps in the initial
+            plan, incorporate the advice given, and add any additional steps or considerations
+            that you believe will lead to a more comprehensive answer.
+
+
+            Present your refined plan in the following format:
+
+
+            <breakdown>
+
+            List the main topics, subtopics, and key elements of the user''s question
+            that need to be addressed.
+
+            </breakdown>
+
+
+            <research_plan>
+
+            Provide a detailed, step-by-step research plan that outlines the information
+            needed to answer the question comprehensively. Include potential sources
+            of information and specific areas to investigate.
+
+            </research_plan>
+
+
+            <report_structure>
+
+            Create a detailed outline for the report, including main sections, subsections,
+            and the type of information to be included in each. The structure should
+            logically flow from the research plan and address all aspects of the user''s
+            question.
+
+
+            For each section, include:
+
+            <section_details>
+
+            Briefly describe what information should be included in this section and
+            why it''s relevant to answering the user''s question.
+
+            </section_details>
+
+            </report_structure>
+
+
+            <additional_notes>
+
+            Provide any additional notes or considerations for the research and report
+            writing process that will help in creating a comprehensive and well-structured
+            answer to the user''s question.
+
+            </additional_notes>
+
+
+            Ensure that your refined plan is more detailed, comprehensive, and better
+            structured than the initial plan. Address any shortcomings mentioned in
+            the advice and add any elements that you believe will contribute to a
+            more thorough and effective research process.'
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: Plan Refine
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 119
+      id: '1757091752303'
+      parentId: '1757091722119'
+      position:
+        x: 508
+        y: 60
+      positionAbsolute:
+        x: 1754
+        y: 791
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: false
+        isInLoop: true
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1757091752303'
+          - text
+          variable_selector:
+          - conversation
+          - plan
+          write_mode: over-write
+        loop_id: '1757091722119'
+        selected: false
+        title: Overwrite Plan
+        type: assigner
+        version: '2'
+      height: 86
+      id: '1757091836193'
+      parentId: '1757091722119'
+      position:
+        x: 812
+        y: 76.5
+      positionAbsolute:
+        x: 2058
+        y: 807.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: d8c2a8db-e1da-4896-85a0-b0461559782e
+          role: system
+          text: "Today is {{#1757085974443.text#}}. You are an AI research assistant\
+            \ tasked with creating a comprehensive research plan and report structure\
+            \ based on a user's question. Your goal is to break down the question,\
+            \ develop a research plan, and outline a report structure that will effectively\
+            \ answer the user's query.\n\nHere is the user's question:\n<user_question>\n\
+            {{#1756966920213.deep_research_query#}}\n</user_question>\n\nFollow these\
+            \ steps to create a research plan and report structure:\n\n1. Break down\
+            \ the question:\n   Analyze the user's question and identify the main\
+            \ topics, subtopics, and key elements that need to be addressed. List\
+            \ these components in <breakdown> tags.\n\n2. Create a research plan:\n\
+            \   Based on the breakdown, develop a step-by-step research plan that\
+            \ outlines the information needed to answer the question comprehensively.\
+            \ Include potential sources of information and specific areas to investigate.\
+            \ Present this plan in <research_plan> tags.\n\n3. Outline the report\
+            \ structure:\n   Create a detailed outline for the report, including main\
+            \ sections, subsections, and the type of information to be included in\
+            \ each. The structure should logically flow from the research plan and\
+            \ address all aspects of the user's question. Present this outline in\
+            \ <report_structure> tags.\n\n4. For each section in the report structure,\
+            \ briefly describe what information should be included and why it's relevant\
+            \ to answering the user's question. Present this information in <section_details>\
+            \ tags within each section of the report structure.\n\n5. Provide any\
+            \ additional notes or considerations for the research and report writing\
+            \ process in <additional_notes> tags.\n\nPresent your complete response\
+            \ in the following format:\n\n<breakdown>\n[List the main components of\
+            \ the user's question]\n</breakdown>\n\n<research_plan>\n[Provide a step-by-step\
+            \ research plan]\n</research_plan>\n\n<report_structure>\n[Outline the\
+            \ report structure with main sections and subsections]\n<section_details>\n\
+            [For each section, describe the information to be included and its relevance]\n\
+            </section_details>\n</report_structure>\n\n<additional_notes>\n[Include\
+            \ any extra considerations or recommendations]\n</additional_notes>\n\n\
+            Ensure that your research plan and report structure are comprehensive,\
+            \ logical, and directly address all aspects of the user's question."
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: Plan Generation
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 119
+      id: '1757091985202'
+      position:
+        x: 638
+        y: 807.5
+      positionAbsolute:
+        x: 638
+        y: 807.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1757091985202'
+          - text
+          variable_selector:
+          - conversation
+          - plan
+          write_mode: over-write
+        selected: false
+        title: Overwrite Plan
+        type: assigner
+        version: '2'
+      height: 86
+      id: '1757092003271'
+      position:
+        x: 942
+        y: 824
+      positionAbsolute:
+        x: 942
+        y: 824
       selected: false
       sourcePosition: right
       targetPosition: left
