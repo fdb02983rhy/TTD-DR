@@ -166,11 +166,11 @@ Output: Final refined report Rt
 
 ### Current Implementation Constraints
 
-1. **Limited Parameter Configuration**: Due to Dify's constraints (no nested loop nodes support and no dynamic node generation capability), not all hyperparameters from the original paper can be fully configured. Specifically:
-   - Cannot dynamically generate multiple variant states (n_p, n_q, n_a, n_r) within the workflow
-   - Self-evolution steps (s_q, s_a, s_r) are simplified compared to the paper's implementation
-   - Dify doesn't have retry fallback to enforce that the number of structured output elements meets requirements
-   - Current implementation doesn't configure agent parameters (e.g., temperature, top_k) to explore diverse search spaces as described in the paper
+1. **Limited Parameter Configuration**: Due to Dify platform constraints and implementation choices, certain hyperparameters from the original paper are not fully configured:
+   - Cannot dynamically generate multiple variant states (n_p, n_q, n_a, n_r) within the workflow due to lack of dynamic node generation capability
+   - Self-evolution steps (s_q, s_a, s_r) are simplified compared to the paper's implementation due to lack of nested loop support
+   - No retry mechanism to validate structured JSON output elements match expected schema
+   - Agent parameters (temperature, top_k, etc.) are not configured for diverse search space exploration, though the platform supports this
 
 2. **Report Revision Approach**: The current implementation rewrites the entire report during each denoising iteration. A more efficient and human-like approach would be:
    - Extract specific sections that need improvement
